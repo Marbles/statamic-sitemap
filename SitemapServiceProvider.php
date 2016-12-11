@@ -22,6 +22,7 @@ class SitemapServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Here we get all the current routes, then add our sitemap route right before the catch-all segment route
         $old_routes = app('router')->getRoutes();
         $new_routes = new RouteCollection();
 
