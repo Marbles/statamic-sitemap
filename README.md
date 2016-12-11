@@ -1,4 +1,4 @@
-# Automatically add a Sitemap.xml to your website
+# Automatically add a Sitemap to your website
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
@@ -11,6 +11,8 @@ php please addons:refresh
 ```
 
 ## Usage
+
+All you need to do is install the add-on, a sitemap based on all your content will be available at `/sitemap.xml`
 
 ## Changelog
 
