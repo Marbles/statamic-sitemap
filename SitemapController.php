@@ -18,9 +18,9 @@ class SitemapController extends Controller
     {
         $content = Content::all();
 
-        $content = $content->filter(function (DataContent $entry) {
+        $content = $content->filter(function(DataContent $entry) {
             return $entry->published();
-        })->map(function (DataContent $entry) {
+        })->map(function(DataContent $entry) {
 
             try {
                 if (method_exists($entry, 'date')) {
