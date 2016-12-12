@@ -10,7 +10,7 @@ use Statamic\Extend\Controller;
 class SitemapController extends Controller
 {
     /**
-     * Maps to your route definition in routes.yaml
+     * Maps to your route definition in routes.yaml.
      *
      * @return \Illuminate\Http\Response
      */
@@ -18,10 +18,9 @@ class SitemapController extends Controller
     {
         $content = Content::all();
 
-        $content = $content->filter(function(DataContent $entry) {
+        $content = $content->filter(function (DataContent $entry) {
             return $entry->published();
-        })->map(function(DataContent $entry) {
-
+        })->map(function (DataContent $entry) {
             try {
                 if (method_exists($entry, 'date')) {
                     $date = $entry->date();
@@ -31,8 +30,8 @@ class SitemapController extends Controller
             }
 
             return [
-                'url' => $entry->absoluteUrl(),
-                'date' => isset($date) ? $date : null
+                'url'  => $entry->absoluteUrl(),
+                'date' => isset($date) ? $date : null,
             ];
         });
 

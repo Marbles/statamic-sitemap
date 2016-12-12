@@ -27,7 +27,7 @@ class SitemapServiceProvider extends ServiceProvider
         $new_routes = new RouteCollection();
 
         foreach ($old_routes as $i => $route) {
-            if ($route->getUri() == "{segments?}") {
+            if ($route->getUri() == '{segments?}') {
                 $sitemap_route = new Route(['GET'], 'sitemap.xml', ['uses' => '\Statamic\Addons\Sitemap\SitemapController@index']);
 
                 $new_routes->add($sitemap_route);
