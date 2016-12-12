@@ -1,6 +1,7 @@
 # Automatically add a Sitemap to your website
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/008aab6e-0ac1-4a38-b712-2cb63d2ea2e4.svg?style=flat-square)](https://insight.sensiolabs.com/projects/008aab6e-0ac1-4a38-b712-2cb63d2ea2e4)
 
 ## Installation
 
