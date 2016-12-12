@@ -3,6 +3,7 @@
 namespace Statamic\Addons\Sitemap;
 
 use Statamic\API\Content;
+use Statamic\Contracts\Data\Content\Content as DataContent;
 use Statamic\Exceptions\InvalidEntryTypeException;
 use Statamic\Extend\Controller;
 
@@ -17,9 +18,9 @@ class SitemapController extends Controller
     {
         $content = Content::all();
 
-        $content = $content->filter(function ($entry) {
+        $content = $content->filter(function (DataContent $entry) {
             return $entry->published();
-        })->map(function ($entry) {
+        })->map(function (DataContent $entry) {
 
             try {
                 if (method_exists($entry, 'date')) {
