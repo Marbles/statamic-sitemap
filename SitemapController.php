@@ -27,6 +27,7 @@ class SitemapController extends Controller
                     $date = $entry->date();
                 }
             } catch (InvalidEntryTypeException $e) {
+                // Don't do anything when there's no date field
             }
 
             return [
