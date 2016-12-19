@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?php echo '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL; ?>
 <urlset xmlns="http://www.google.com/schemas/sitemap/0.90">
     @foreach ($content as $entry)
         <url>
