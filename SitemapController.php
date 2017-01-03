@@ -33,7 +33,7 @@ class SitemapController extends Controller
                 'url'  => $entry->absoluteUrl(),
                 'date' => isset($date) ? $date : null,
             ];
-        });
+        })->unique('url');
 
         return response()->make($this->view('index', compact('content')), '200')->header('Content-Type', 'text/xml');
     }
