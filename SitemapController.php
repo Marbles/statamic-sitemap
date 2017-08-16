@@ -54,8 +54,8 @@ class SitemapController extends Controller
             $entry->locale($defaultLocale);
 
             return [
-                'url'  => $entry->absoluteUrl(),
-                'date' => isset($date) ? $date : null,
+                'url'        => $entry->absoluteUrl(),
+                'date'       => isset($date) ? $date : null,
                 'alternates' => $alternates,
             ];
         })->unique('url');
