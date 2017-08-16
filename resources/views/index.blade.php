@@ -8,6 +8,13 @@
                     {{ $entry['date']->toAtomString() }}
                 </lastmod>
             @endif
+            @foreach ($entry['alternates'] as $locale => $url)
+                <xhtml:link
+                        rel="alternate"
+                        hreflang="{{ $locale }}"
+                        href="{{ $url }}"
+                />
+            @endforeach
         </url>
     @endforeach
 </urlset>

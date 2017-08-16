@@ -18,6 +18,7 @@ class SitemapController extends Controller
     public function index()
     {
         $content = Content::all();
+        $defaultLocale = default_locale();
 
         $content = $content->filter(function (DataContent $entry) {
             /**
@@ -27,7 +28,7 @@ class SitemapController extends Controller
             $hasRoute = $entry instanceof Page || $entry->url() !== '/';
 
             return $entry->published() && $hasRoute;
-        })->map(function (DataContent $entry) {
+        })->map(function (DataContent $entry) use ($defaultLocale) {
             try {
                 if (method_exists($entry, 'date')) {
                     $date = $entry->date();
@@ -36,9 +37,26 @@ class SitemapController extends Controller
                 // Don't do anything when there's no date field
             }
 
+            // set up alternate locales
+            $alternates = [];
+            foreach ($entry->locales() as $locale) {
+                // skip default locale
+                if ($locale === $defaultLocale) {
+                    continue;
+                }
+
+                // locale and generate url
+                $entry->locale($locale);
+                $alternates[$locale] = $entry->absoluteUrl();
+            }
+
+            // reset locale of the entry to generate correct url
+            $entry->locale($defaultLocale);
+
             return [
                 'url'  => $entry->absoluteUrl(),
                 'date' => isset($date) ? $date : null,
+                'alternates' => $alternates,
             ];
         })->unique('url');
 
