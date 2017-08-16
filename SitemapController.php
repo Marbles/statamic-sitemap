@@ -4,6 +4,7 @@ namespace Statamic\Addons\Sitemap;
 
 use Statamic\API\Content;
 use Statamic\Contracts\Data\Content\Content as DataContent;
+use Statamic\Contracts\Data\Pages\Page;
 use Statamic\Exceptions\InvalidEntryTypeException;
 use Statamic\Extend\Controller;
 
@@ -19,7 +20,13 @@ class SitemapController extends Controller
         $content = Content::all();
 
         $content = $content->filter(function (DataContent $entry) {
-            return $entry->published();
+            /**
+             * Check if the entry has a route set up
+             * Only accept the front page with an empty url.
+             */
+            $hasRoute = $entry instanceof Page || $entry->url() !== '/';
+
+            return $entry->published() && $hasRoute;
         })->map(function (DataContent $entry) {
             try {
                 if (method_exists($entry, 'date')) {
