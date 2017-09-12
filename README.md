@@ -10,7 +10,7 @@
 Download or clone the repository, rename the folder to `Sitemap` then copy the folder to your site's `Addons` directory, then refresh the add-ons to install the dependencies.
 
 ``` bash
-php please addons:refresh
+php please update:addons
 ```
 
 ## Usage
